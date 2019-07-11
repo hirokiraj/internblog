@@ -1,0 +1,16 @@
+<h1>List of authors</h1>
+
+<ul>
+  <% @authors.each do |author| %>
+    <li>
+      <%= link_to author.fullname, author %>
+      <-||->
+      <%= link_to 'Edit', edit_author_path(author) %>
+      <-||->
+      <%= link_to 'Delete', author, method: :delete, data: { confirm: 'Sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Home', root_url %>
+<%= link_to 'New author', new_author_path %>
