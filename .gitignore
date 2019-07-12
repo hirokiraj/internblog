@@ -32,3 +32,6 @@
 
 # Banish .DS_Store
 .DS_Store
+
+# Remove coverage report
+/coverage
