@@ -1,5 +1,6 @@
 class Author < ApplicationRecord
   validates :name, :surname, presence: true
+  has_many :posts
 
   before_create :default_age
 

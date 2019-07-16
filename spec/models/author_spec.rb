@@ -10,6 +10,10 @@ RSpec.describe Author, type: :model do
     it { is_expected.to validate_presence_of(:surname) }
   end
 
+  describe 'relations' do
+    it { is_expected.to have_many(:posts) }
+  end
+
   describe 'scopes' do
     let!(:author1) { create(:author, age: 12) }
     let!(:author2) { create(:author, age: 14) }
