@@ -18,7 +18,6 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 10 do
       execute 'sudo systemctl restart $USER-unicorn.service'
-      execute 'sudo systemctl restart $USER-sidekiq.service'
     end
   end
 
