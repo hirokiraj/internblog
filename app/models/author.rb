@@ -1,6 +1,6 @@
 class Author < ApplicationRecord
   validates :name, :surname, presence: true
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   before_create :default_age
 

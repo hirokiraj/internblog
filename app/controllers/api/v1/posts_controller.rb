@@ -9,20 +9,24 @@ class Api::V1::PostsController < ApiController
 
   def create
     @post = Post.new(post_params)
-    return render json: { errors: @post.errors.full_messages }, status: 422 unless @post.save
-    render 'show', status: 201
+    return render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity unless @post.save
+
+    render 'show', status: :created
   end
 
   def update
     @post = Post.find(params[:id])
-    return render json: { errors: @post.errors.full_messages }, status: 422 unless @post.update(post_params)
+    unless @post.update(post_params)
+      return render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
+    end
+
     render 'show'
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    head 204
+    head :no_content
   end
 
   private
