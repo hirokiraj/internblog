@@ -40,9 +40,15 @@ group :test do
   gem 'simplecov', require: false
 end
 
+group :production do
+  gem 'unicorn-rails'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'rspec-rails', '~> 3.8'
