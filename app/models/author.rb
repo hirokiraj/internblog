@@ -1,8 +1,12 @@
 class Author < ApplicationRecord
   validates :name, :surname, presence: true
   has_many :posts, dependent: :destroy
+  has_one :address, dependent: :destroy
+  has_many :comments, as: :commentable
 
   before_create :default_age
+
+  enum status: [:active, :retired]
 
   scope :old, -> { where('age > 30') }
 
